@@ -88,7 +88,7 @@ function Article() {
       content={
         <>
           {
-            data.articles.slice((page - 1) * 10, page * 10).map((content) =>
+            data.articles.slice((page - 1) * 5, page * 5).map((content) =>
               <Card sx={{ marginBottom: 2, marginTop: 1 }}>
                 <CardActionArea href={content.url} target="_blank">
                   <Grid container>
@@ -116,7 +116,7 @@ function Article() {
             )
           }
           <Pagination
-            count={data.articles.length / 10}
+            count={(Math.floor(data.articles.length / 5) + (data.articles.length % 5 > 0 ? 1 : 0))}
             page={page} variant="outlined"
             shape="rounded"
             onChange={(e, value) => setPage(value)}
